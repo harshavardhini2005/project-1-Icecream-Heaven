@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Heaven - Shakes</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffe5b4;; /* Light yellow background color */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+        }
+
+        header {
+            background-color: #FFCC00; /* Header background color */
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333; /* Dark text color */
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .shake-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .shake {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 10px;
+            text-align: center;
+            width: 200px; /* Fixed width for shake cards */
+            background-color: #fff; /* White background for shake cards */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+
+        .shake img {
+            width: 100%; /* Make images responsive */
+            border-radius: 8px 8px 0 0; /* Rounded top corners */
+        }
+
+        .add-to-cart {
+            background-color: #FF5722; /* Orange background color */
+            color: white; /* White text color */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px; /* Padding inside the button */
+            cursor: pointer; /* Change cursor to pointer */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+            margin: 10px; /* Margin for spacing */
+        }
+
+        .add-to-cart:hover {
+            background-color: #E64A19; /* Darker shade on hover */
+        }
+
+        footer {
+            background-color: #333; /* Footer background color */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+        footer .social-links a {
+    color: #ffcb05;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+footer .social-links a:hover {
+    text-decoration: underline;
+}
+        /* Header and Logo */
+header {
+    background: linear-gradient(135deg, #ffcb05, #ff8c00);
+    padding: 30px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+header .logo {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+}
+
+header .logo img {
+    width: 125px;
+    height: 125px;
+}
+
+header h1 {
+    font-size: 3em;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}
+/* Navigation Menu Styling */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block; /* Use inline-block to allow relative positioning */
+    margin: 0 15px;
+    position: relative;  /* Necessary for dropdown positioning */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffe5b4;
+}
+
+/* Dropdown Menu */
+nav ul li .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-10px); /* Start 10px higher */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for both */
+}
+
+/* Dropdown Menu Animation */
+nav ul li:hover .dropdown-content {
+    display: block;
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Slide down to its original position */
+}
+
+/* Dropdown Items */
+nav ul li .dropdown-content li {
+    display: block;
+}
+
+nav ul li .dropdown-content li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+nav ul li .dropdown-content li a:hover {
+    background-color: #ffcb05; /* Change background color on hover */
+}
+
+/* Show dropdown with animation */
+nav ul li:hover .dropdown-content {
+    display: block;
+    opacity: 1; /* Visible */
+    transform: translateY(0); /* Animate slide down */
+}
+/* Cart Section Styling */
+nav ul li.cart {
+    position: absolute; /* Positioning it absolutely within the header */
+    right: 20px; /* Align it to the right */
+    top: 20px; /* Align it vertically */
+}
+
+nav ul li.cart a {
+    color: white; /* Make the cart icon color white */
+    font-size: 1.5em; /* Adjust the size of the icon */
+    text-decoration: none; /* Remove underline */
+    display: flex;
+    align-items: center; /* Center the items vertically */
+}
+
+nav ul li.cart img {
+    width: 30px; /* Size of the cart icon */
+    height: 30px; /* Size of the cart icon */
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.cart-count {
+    background-color: #ff8c00; /* Background color for cart count */
+    color: white; /* Text color for cart count */
+    border-radius: 50%; /* Make it circular */
+    padding: 5px 10px; /* Padding for better size */
+    font-size: 1em; /* Font size for count */
+    position: relative; /* For precise positioning */
+    top: -10px; /* Adjust positioning */
+    right: -10px; /* Adjust positioning */
+}
+nav ul li.login {
+    position: absolute; /* Position it absolutely within the header */
+    top: 25px; /* Align it vertically */
+    right: 150px; /* Align it near the cart on the right side */
+    display: flex;
+    align-items: center; /* Vertically center the login text */
+}
+
+nav ul li.login a {
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li.login a:hover {
+    color: #ffe5b4; /* Change color on hover */
+}
+.shake {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    text-align: center;
+    width: 200px; /* Fixed width for shake cards */
+    background-color: #fff; /* White background for shake cards */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for scaling and shadow */
+}
+
+.shake:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/ice-cream-logo%2C-ice-cream-icon%2C-free-design-template-e30d3ba1edca5be27363cf2d7119ad0d_screen.jpg?ts=1662440157" alt="Ice Cream Heaven Logo">
+        </div>
+        <h1>Welcome to Ice Cream Heaven!</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="login">
+                    <a href="Login.html">Login</a>
+                </li>
+                <li class="cart">
+                    <a href="#" aria-label="Shopping Cart">
+                        <img src="https://img.icons8.com/ios/50/ffffff/shopping-cart.png" alt="Cart Icon" />
+                        <span class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h2>Delicious Shakes</h2>
+    <div class="shake-container">
+        <div class="shake">
+            <img src="choclateshake.jpg" alt="Chocolate Shake">
+            <h3>Chocolate Shake</h3>
+            <p>Price: ₹249</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="shake">
+            <img src="strawberryshake.jpg" alt="Strawberry Shake">
+            <h3>Strawberry Shake</h3>
+            <p>Price: ₹249</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="shake">
+            <img src="vanilashake.jpg" alt="Vanilla Shake">
+            <h3>Vanilla Shake</h3>
+            <p>Price: ₹249</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="shake">
+            <img src="mangoshake.jpg" alt="Mango Shake">
+            <h3>Mango Shake</h3>
+            <p>Price: ₹249</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <!-- <div class="shake">
+            <img src="butterscotchshake.jpg" alt="Butterscotch Shake">
+            <h3>Butterscotch Shake</h3>
+            <p>Price: ₹249</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div> -->
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Ice Cream Heaven. All rights reserved.</p>
+        <p>Follow us on:</p>
+        <div class="social-links">
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+</body>
+</html>

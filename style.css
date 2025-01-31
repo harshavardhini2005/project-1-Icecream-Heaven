@@ -1,0 +1,322 @@
+/* General Reset and Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    overflow-x: hidden;
+}
+
+/* Header and Logo */
+header {
+    background: linear-gradient(135deg, #ffcb05, #ff8c00);
+    padding: 30px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+header .logo {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+}
+
+header .logo img {
+    width: 125px;
+    height: 125px;
+}
+
+header h1 {
+    font-size: 3em;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+/* Navigation Menu Styling */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block; /* Use inline-block to allow relative positioning */
+    margin: 0 15px;
+    position: relative;  /* Necessary for dropdown positioning */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffe5b4;
+}
+
+/* Dropdown Menu */
+nav ul li .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-10px); /* Start 10px higher */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for both */
+}
+
+/* Dropdown Menu Animation */
+nav ul li:hover .dropdown-content {
+    display: block;
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Slide down to its original position */
+}
+
+/* Dropdown Items */
+nav ul li .dropdown-content li {
+    display: block;
+}
+
+nav ul li .dropdown-content li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+nav ul li .dropdown-content li a:hover {
+    background-color: #ffcb05; /* Change background color on hover */
+}
+
+/* Show dropdown with animation */
+nav ul li:hover .dropdown-content {
+    display: block;
+    opacity: 1; /* Visible */
+    transform: translateY(0); /* Animate slide down */
+}
+/* Cart Section Styling */
+nav ul li.cart {
+    position: absolute; /* Positioning it absolutely within the header */
+    right: 20px; /* Align it to the right */
+    top: 20px; /* Align it vertically */
+}
+
+nav ul li.cart a {
+    color: white; /* Make the cart icon color white */
+    font-size: 1.5em; /* Adjust the size of the icon */
+    text-decoration: none; /* Remove underline */
+    display: flex;
+    align-items: center; /* Center the items vertically */
+}
+
+nav ul li.cart img {
+    width: 30px; /* Size of the cart icon */
+    height: 30px; /* Size of the cart icon */
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.cart-count {
+    background-color: #ff8c00; /* Background color for cart count */
+    color: white; /* Text color for cart count */
+    border-radius: 50%; /* Make it circular */
+    padding: 5px 10px; /* Padding for better size */
+    font-size: 1em; /* Font size for count */
+    position: relative; /* For precise positioning */
+    top: -10px; /* Adjust positioning */
+    right: -10px; /* Adjust positioning */
+}
+
+/* General styling for the flavor container */
+.flavor-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #ffe5b4;
+    text-align: center;
+}
+
+.flavor-container h2 {
+    font-size: 2.5em;
+    color: #ff8c00;
+    margin-bottom: 20px;
+}
+
+/* Styling for the flavors section */
+.flavors {
+    display: flex;
+    justify-content: center;
+    animation: scroll 25s linear infinite;
+}
+
+.flavor {
+    margin: 0 30px;  /* Space between flavor images */
+    text-align: center;
+}
+
+.flavor img {
+    width: 160px;  /* Adjusted size for flavor images */
+    height: 140px;
+    border-radius: 10%;
+    margin-bottom: 10px;
+}
+
+.flavor p {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ff8c00;
+}
+
+/* Scroll animation */
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Styling for the ice-cream-cards section */
+.ice-cream-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+    background-color: #ffebcc; /* Soft peach background for the section */
+    border-radius: 10px; /* Optional rounded corners for the section */
+    max-width: 100%; /* Adjust as necessary */
+    margin-bottom: 0; /* Remove bottom margin to eliminate white space */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow for the section */
+}
+
+/* Card Styles */
+.card {
+    background-color: #ffe5b4; /* Light cream background for cards */
+    border: 2px ; /* Sky blue border for a fresh look */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+    text-align: center;
+    position: relative; /* Allow absolute positioning for badge */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    overflow: hidden; /* Ensures background color fills the entire card, including corners */
+    padding: 10px; /* Additional padding inside cards */
+}
+
+.card img {
+    width: 100%; /* Full width to fit card */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px 15px 0 0; /* Round top corners */
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.6em; /* Larger font for titles */
+    color: black;
+}
+
+.card p {
+    font-size: 1.2em;
+    color: #333; /* Darker color for price */
+    margin-bottom: 15px; /* Space below price */
+}
+
+/* Hover Effect on Cards */
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge card */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+    background-color: #ff8c00; /* Change background on hover to orange */
+    color: white; /* Change text color to white on hover */
+}
+
+/* Adding a badge or icon */
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffcb05; /* Yellow background for badge */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em; /* Smaller font for badge */
+}
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 0; /* Remove any margin between the footer and the card section */
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+footer .social-links a {
+    color: #ffcb05;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+footer .social-links a:hover {
+    text-decoration: underline;
+}
+.flavor-list {
+    display: flex;                /* Use flexbox for layout */
+    flex-wrap: wrap;             /* Allow items to wrap to the next line */
+    justify-content: center;      /* Center the flavor cards horizontally */
+    gap: 20px;                   /* Space between the cards */
+    margin: 20px;                /* Space around the flavor list */
+}
+
+.flavor {
+    background-color: #fff;      /* Card background color */
+    border-radius: 10px;         /* Rounded corners for cards */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    text-align: center;           /* Center text in cards */
+    padding: 15px;               /* Padding inside cards */
+    width: 200px;                 /* Fixed width for flavor cards */
+}
+/* Login Section Styling */
+nav ul li.login {
+    position: absolute; /* Position it absolutely within the header */
+    top: 25px; /* Align it vertically */
+    right: 100px; /* Align it near the cart on the right side */
+    display: flex;
+    align-items: center; /* Vertically center the login text */
+}
+
+nav ul li.login a {
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li.login a:hover {
+    color: #ffe5b4; /* Change color on hover */
+}
+/* Existing CSS styles... */
+
+.add-to-cart {
+    background-color: #FF5722; /* Orange background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside the button */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.add-to-cart:hover {
+    background-color: #333; /* Darker shade on hover */
+}
